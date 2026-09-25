@@ -290,12 +290,12 @@ setorder(s13e, gene_order__)
 s13e[, gene_order__ := NULL]
 
 table_specs <- list(
-  S2_MAGMA = list(title = "Supplementary Table S2. Complete MAGMA competitive gene-set results.",
+  S10_MAGMA = list(title = "Supplementary Table S10. Corrected pathway-level MAGMA results.",
                   sections = list(list(label = "Results", data = s1))),
-  S3_Cross_trait = list(title = "Supplementary Table S3. Cross-phenotype MAGMA comparisons.",
+  S9_Cross_trait = list(title = "Supplementary Table S9. Corrected paired cross-phenotype MAGMA comparisons.",
                         sections = list(list(label = "A. Paired leave-one-chromosome-out contrasts", data = s2a),
                                         list(label = "B. Residual-scale sensitivity analyses", data = s2b))),
-  S4_Candidate_sensitivity = list(title = "Supplementary Table S4. Candidate-set specificity analyses.",
+  S3_Candidate_sensitivity = list(title = "Supplementary Table S3. Candidate-set sensitivity analyses.",
                                   sections = list(list(label = "A. Prespecified candidate-set definitions", data = s3a),
                                                   list(label = "B. Leave-one-pathway-out analyses", data = s3b),
                                                   list(label = "C. Size-matched random gene sets", data = s3c))),
@@ -303,25 +303,25 @@ table_specs <- list(
                                  sections = list(list(label = "A. Pathway-level annotation", data = s4a),
                                                  list(label = "B. Pathway-gene membership", data = s4b),
                                                  list(label = "C. Deduplicated candidate genes", data = s4c))),
-  S5_All_cisMR = list(title = "Supplementary Table S5. Complete skeletal-muscle cis-MR results.", sections = list(list(label = "Results", data = s5))),
-  S6_FDR_cisMR = list(title = "Supplementary Table S6. FDR-significant skeletal-muscle cis-MR results.", sections = list(list(label = "Results", data = s6))),
-  S7_All_coloc = list(title = "Supplementary Table S7. Complete coloc.abf results across priors.", sections = list(list(label = "Results", data = s7))),
-  S8_SuSiE = list(title = "Supplementary Table S8. Multi-signal colocalization and credible sets.",
+  S11_All_cisMR = list(title = "Supplementary Table S11. Complete skeletal-muscle cis-MR results.", sections = list(list(label = "Results", data = s5))),
+  S12_FDR_cisMR = list(title = "Supplementary Table S12. FDR-significant skeletal-muscle cis-MR results.", sections = list(list(label = "Results", data = s6))),
+  S13_All_coloc = list(title = "Supplementary Table S13. Complete single-signal colocalization and prior sensitivity.", sections = list(list(label = "Results", data = s7))),
+  S4_SuSiE = list(title = "Supplementary Table S4. Complete-region coloc-SuSiE results and LD audit.",
                   sections = list(list(label = "A. Locus-level QC and summary", data = s8a),
                                   list(label = "B. Signal-pair results across priors", data = s8b),
                                   list(label = "C. Credible-set summaries", data = s8c),
                                   list(label = "D. Credible-set members", data = s8d))),
-  S9_FUSION = list(title = "Supplementary Table S9. Alternative skeletal-muscle eQTL follow-up.", sections = list(list(label = "Results", data = s9))),
-  S10_GEFOS = list(title = "Supplementary Table S10. External ALM outcome follow-up.", sections = list(list(label = "Results", data = s10))),
-  S13_MAGIC = list(title = "Supplementary Table S13. Insulin-resistance mechanistic extension.", sections = list(list(label = "Results", data = s11))),
-  S11_snRNA = list(title = "Supplementary Table S11. Single-nucleus RNA-sequencing quality control, clustering and annotation, cell-type localization, donor-level composition, and pseudobulk results.",
+  S14_FUSION = list(title = "Supplementary Table S14. Alternative skeletal-muscle eQTL-source analysis.", sections = list(list(label = "Results", data = s9))),
+  S15_GEFOS = list(title = "Supplementary Table S15. GEFOS external-outcome follow-up.", sections = list(list(label = "Results", data = s10))),
+  S16_MAGIC = list(title = "Supplementary Table S16. Exploratory MAGIC systemic-IR boundary analysis.", sections = list(list(label = "Results", data = s11))),
+  S7_snRNA = list(title = "Supplementary Table S7. Single-nucleus localization and pseudobulk analyses.",
                    sections = list(list(label = "A. Cell-type donor and nuclei counts", data = s12a),
                                    list(label = "B. Donor-level QC", data = s12b),
                                    list(label = "C. Pseudobulk sample-cell-type QC", data = s12c),
                                    list(label = "D. Tier A cell-type localization", data = s12d),
                                    list(label = "E. Donor-aware pseudobulk contrasts", data = s12e),
                                    list(label = "F. Donor-level cell-type composition comparisons", data = s12f))),
-  S12_sQTL = list(title = "Supplementary Table S12. Skeletal-muscle sQTL analyses.",
+  S8_sQTL = list(title = "Supplementary Table S8. GTEx v11 skeletal-muscle sQTL-MR results.",
                   sections = list(list(label = "A. Empirically significant sQTL pairs", data = s13a),
                                   list(label = "B. Eligible lead sQTLs", data = s13b),
                                   list(label = "C. Harmonization audit", data = s13c),
@@ -394,29 +394,29 @@ style_revision <- function(sheet, section_label, data, row_selector, columns) {
 
 # Black bold marks values recalculated during this revision. Identifiers and
 # unchanged descriptive fields remain regular black text.
-style_revision("S2_MAGMA", "Results", s1, s1$trait == "ALM",
+style_revision("S10_MAGMA", "Results", s1, s1$trait == "ALM",
                c("BETA", "BETA_STD", "SE", "P", "FDR"))
-style_revision("S3_Cross_trait", "A. Paired leave-one-chromosome-out contrasts", s2a,
+style_revision("S9_Cross_trait", "A. Paired leave-one-chromosome-out contrasts", s2a,
                s2a$comparison %in% c("ALM vs GRIP", "ALM vs WALK"),
                setdiff(names(s2a), c("comparison", "trait_1", "trait_2")))
-style_revision("S3_Cross_trait", "B. Residual-scale sensitivity analyses", s2b,
+style_revision("S9_Cross_trait", "B. Residual-scale sensitivity analyses", s2b,
                s2b$comparison %in% c("ALM vs GRIP", "ALM vs WALK"),
                setdiff(names(s2b), c("scale", "comparison", "trait_1", "trait_2")))
-style_revision("S4_Candidate_sensitivity", "A. Prespecified candidate-set definitions", s3a,
+style_revision("S3_Candidate_sensitivity", "A. Prespecified candidate-set definitions", s3a,
                rep(TRUE, nrow(s3a)), c("beta", "beta_std", "se", "t", "p_positive", "fdr_positive_BH"))
-style_revision("S4_Candidate_sensitivity", "B. Leave-one-pathway-out analyses", s3b,
+style_revision("S3_Candidate_sensitivity", "B. Leave-one-pathway-out analyses", s3b,
                rep(TRUE, nrow(s3b)), c("beta", "beta_std", "se", "t", "p_positive", "fdr_positive_BH"))
-style_revision("S4_Candidate_sensitivity", "C. Size-matched random gene sets", s3c,
+style_revision("S3_Candidate_sensitivity", "C. Size-matched random gene sets", s3c,
                rep(TRUE, nrow(s3c)), setdiff(names(s3c), c("set_name", "n_iterations", "n_target_magma_eligible")))
-style_revision("S10_GEFOS", "Results", s10, rep(TRUE, nrow(s10)),
+style_revision("S15_GEFOS", "Results", s10, rep(TRUE, nrow(s10)),
                c("external_coloc_PP3", "external_coloc_PP4"))
-style_revision("S11_snRNA", "A. Cell-type donor and nuclei counts", s12a,
+style_revision("S7_snRNA", "A. Cell-type donor and nuclei counts", s12a,
                rep(TRUE, nrow(s12a)), setdiff(names(s12a), "cell_type"))
-style_revision("S12_sQTL", "B. Eligible lead sQTLs", s13b,
+style_revision("S8_sQTL", "B. Eligible lead sQTLs", s13b,
                rep(TRUE, nrow(s13b)), c("pval_nominal", "slope", "slope_se", "pval_beta", "qval", "F_stat"))
-style_revision("S12_sQTL", "D. Targeted sQTL-MR", s13d,
+style_revision("S8_sQTL", "D. Targeted sQTL-MR", s13d,
                rep(TRUE, nrow(s13d)), c("beta", "se", "pval", "fdr_targeted"))
-style_revision("S12_sQTL", "E. Integrated summary", s13e,
+style_revision("S8_sQTL", "E. Integrated summary", s13e,
                rep(TRUE, nrow(s13e)), c("sgene_qval", "lead_sQTL_pval", "lead_sQTL_F",
                                         "minimum_nominal_p", "sqtl_mr_beta", "sqtl_mr_se",
                                         "sqtl_mr_pval", "sqtl_mr_fdr"))
